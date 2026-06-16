@@ -11,7 +11,7 @@ A basic AWS infra with:
 - S3 bucket to store Terraform state files
 - Dynamo table for state locking (so I dont break things if I       work from two places)
 
-## Project Strucute
+#### Project Strucute
 ```
 my-devops-project/
 ├── .gitignore
