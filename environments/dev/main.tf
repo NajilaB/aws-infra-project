@@ -13,13 +13,13 @@ module "ec2" {
 }*/
 locals {
   common_tags = {
-    Project = "my-devops-project"
+    Project   = "my-devops-project"
     ManagedBy = "terraform"
   }
 }
 
 module "vpc" {
-  source      ="../../modules/vpc"
+  source      = "../../modules/vpc"
   vpc_cidr    = var.vpc_cidr
   environment = var.environment
   tags        = local.common_tags
