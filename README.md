@@ -73,9 +73,9 @@ my-devops-project/
 
 ## Things I Have NOT Approached YET 
 
-- [] Run 'terraform plan' in dev 
-- [] Run 'terraform apply' in dev
-- [] Repeat init/plan/apply for staging and prod env
+- [x] Run 'terraform plan' in dev 
+- [x] Run 'terraform apply' in dev
+- [x] Repeat init/plan/apply for staging and prod env
 - [] Install Jenkins
 - [] Set up TomCat on EC2
 - [] Learn Docker and containerise anything
