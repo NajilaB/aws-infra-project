@@ -12,7 +12,7 @@ A basic AWS infra with:
 - Dynamo table for state locking (so I dont break things if I       work from two places)
 
 ## Project Strucute
-
+```
 my-devops-project/
 ├── .gitignore
 ├── README.md
