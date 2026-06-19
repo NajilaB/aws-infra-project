@@ -106,15 +106,15 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Import Existing Resources
-        run: |
-          terraform import aws_iam_openid_connect_provider.github 
-          arn:aws:iam::018881301386:oidc-provider/token.actions.githubusercontent.com || true
-          terraform import aws_iam_role.github_actions GitHubActionsTerraformRole || true
-          terraform import aws_iam_role_policy_attachment.admin GitHubActionsTerraformRole/arn:aws:iam::aws:policy/AdministratorAccess || true
-
-          
-          
+      - name: Debug Terraform State
+        run: terraform state list
+      
+      #- name: Terraform Import Existing Resources
+       # run: |
+         # terraform import aws_iam_openid_connect_provider.github 
+      #    arn:aws:iam::018881301386:oidc-provider/token.actions.githubusercontent.com || true
+        #  terraform import aws_iam_role.github_actions GitHubActionsTerraformRole || true
+        #  terraform import aws_iam_role_policy_attachment.admin GitHubActionsTerraformRole/arn:aws:iam::aws:policy/AdministratorAccess || true    
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
