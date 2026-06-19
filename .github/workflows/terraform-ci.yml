@@ -8,13 +8,13 @@ on:
     paths:
       - '**.tf'
       - '**.tfvars'
-      - '.gitignore/workflows**'
+      - '.github/workflows/**'
   push:
     branches: [main]
     paths:
       - '**.tf'
       - '**.tfvars'
-      - '.gitignore/workflows**'
+      - '.github/workflows/**'
 
 
 permissions:
@@ -111,19 +111,20 @@ jobs:
           terraform_version: ${{ env.TF_VERSION }}
 
       - name: Terraform Init
-        run: terraform -chdir=environments/dev init
+        working-directory: environments/dev
+        run: terraform init
 
       #- name: Debug Terraform State
       #  working-directory: environments/dev
       #  run: terraform state list
       
-      - name: Terraform Import Existing Resources
-        run: |
-          terraform import aws_iam_openid_connect_provider.github 
-          arn:aws:iam::018881301386:oidc-provider/token.actions.githubusercontent.com || true
-          terraform import aws_iam_role.github_actions GitHubActionsTerraformRole || true
-          terraform import aws_iam_role_policy_attachment.admin GitHubActionsTerraformRole/arn:aws:iam::aws:policy/AdministratorAccess || true    
+      #- name: Terraform Import Existing Resources
+      #  run: |
+       #   terraform import aws_iam_openid_connect_provider.github 
+       #   arn:aws:iam::018881301386:oidc-provider/token.actions.githubusercontent.com || true
+       #   terraform import aws_iam_role.github_actions GitHubActionsTerraformRole || true
+       #   terraform import aws_iam_role_policy_attachment.admin GitHubActionsTerraformRole/arn:aws:iam::aws:policy/AdministratorAccess || true    
 
       - name: Terraform Apply
         working-directory: environments/dev
-        run: terraform apply -auto-approve -input=false
+        run: terraform apply -var-file="terraform.tfvars" -auto-approve -input=false
