@@ -7,12 +7,12 @@ on:
     branches: [main]
     paths:
       - '**.tf'
-      - '**.tfvars'
+     # - '**.tfvars'
   push:
     branches: [main]
     paths:
       - '**.tf'
-      - '**.tfvars'
+      #- '**.tfvars'
 
 permissions:
   id-token: write
@@ -63,7 +63,7 @@ jobs:
       - name: Terraform Plan
         id: plan
         working-directory: environments/dev
-        run: terraform plan -var-file="dev.tfvars" -no-color -input=false
+        run: terraform plan -var-file="terraform.tfvars" -no-color -input=false
         continue-on-error: true
 
       - name: Post Plan to PR
