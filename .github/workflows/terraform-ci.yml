@@ -46,19 +46,23 @@ jobs:
 
       - name: Terraform Format Check
         id: fmt
+        working-directory: environments/dev
         run: terraform fmt -check -recursive
         continue-on-error: true
 
       - name: Terraform Init
         id: init
+        working-directory: environments/dev
         run: terraform init
 
       - name: Terraform Validate
         id: validate
+        working-directory: environments/dev
         run: terraform validate -no-color
 
       - name: Terraform Plan
         id: plan
+        working-directory: environments/dev
         run: terraform plan -no-color -input=false
         continue-on-error: true
 
@@ -104,9 +108,10 @@ jobs:
           terraform_version: ${{ env.TF_VERSION }}
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform -chdir=environments/dev init
 
       - name: Debug Terraform State
+        working-directory: environments/dev
         run: terraform state list
       
       #- name: Terraform Import Existing Resources
@@ -117,4 +122,5 @@ jobs:
         #  terraform import aws_iam_role_policy_attachment.admin GitHubActionsTerraformRole/arn:aws:iam::aws:policy/AdministratorAccess || true    
 
       - name: Terraform Apply
+        working-directory: environments/dev
         run: terraform apply -auto-approve -input=false
