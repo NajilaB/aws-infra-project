@@ -106,5 +106,10 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Terraform Import OIDC Provider
+        run: |
+          terraform import aws_iam_openid_connect_provider.github arn:aws:iam::018881301386:oidc-provider/token.actions.githubusercontent.com || true
+          
+
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
