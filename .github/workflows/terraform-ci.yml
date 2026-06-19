@@ -7,12 +7,15 @@ on:
     branches: [main]
     paths:
       - '**.tf'
-     # - '**.tfvars'
+      - '**.tfvars'
+      - '.gitignore/workflows**'
   push:
     branches: [main]
     paths:
       - '**.tf'
-      #- '**.tfvars'
+      - '**.tfvars'
+      - '.gitignore/workflows**'
+
 
 permissions:
   id-token: write
