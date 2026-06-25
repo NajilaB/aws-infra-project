@@ -4,24 +4,42 @@ variable "user_data" {
 	default     = ""
 }
 variable "instance_type" {
-    description = "EC2 instance type"
+	description = "EC2 instance type"
 }
 variable "ami_id"{
-    description = "AMI ID for EC2 instance"
-    type        = string
+	description = "AMI ID for EC2 instance"
+	type        = string
 
     }
 variable "environment" {
-    description = "Environment name"
-     type       = string
+	description = "Environment name"
+		type       = string
 }
 variable "subnet_id" {
-    description = "Subnet ID to launch EC2 in"
-    type        = string
+	description = "Subnet ID to launch EC2 in"
+	type        = string
 }
 
 variable "tags" {
-    description = "Common tags for all resources"
-    type        = map(string)
-    default     = {}
+	description = "Common tags for all resources"
+	type        = map(string)
+	default     = {}
+}
+
+variable "vpc_id" {
+	description = "VPC ID for security group"
+	type        = string
+	#default     = string
+}
+
+variable "vpc_cidr" {
+	description = "CIDR block for VPC"
+	type        = string
+	#default     = string
+}
+
+variable "my_ip" {
+	description = "AMI ID for EC2 instance"
+	type        = string
+	#default     = string
 }
