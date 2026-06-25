@@ -19,6 +19,8 @@ module "ec2" {
   subnet_id     = module.vpc.public_subnet_id
   environment   = var.environment
   tags          = local.common_tags
+
+  user_data = file("${path.module}/user-data.sh")
 }
 
 

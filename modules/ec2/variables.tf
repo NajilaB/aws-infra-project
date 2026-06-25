@@ -1,3 +1,8 @@
+variable "user_data" {
+	description = "Bootstrap script for EC2"
+	type		= string
+	default     = ""
+}
 variable "instance_type" {
     description = "EC2 instance type"
 }
