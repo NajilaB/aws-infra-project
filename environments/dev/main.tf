@@ -17,6 +17,9 @@ module "ec2" {
   ami_id        = var.ami_id
   instance_type = var.instance_type
   subnet_id     = module.vpc.public_subnet_id
+  vpc_id        = module.vpc.vpc_id
+  vpc_cidr      = var.vpc_cidr
+  my_ip         = var.my_ip
   environment   = var.environment
   tags          = local.common_tags
 
